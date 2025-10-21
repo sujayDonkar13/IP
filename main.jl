@@ -1,8 +1,9 @@
 # IMPORTANT! Your names, surnames, student IDs
 # Include here packages
-using DelimitedFiles, Printf
+# Added inclusion of Plots for plotting needs (Adrian)
+using DelimitedFiles, Printf, Plots
 # Include here other scripts if needed, e.g., include("myfunctions.jl")
-include("evaluator.jl")
+include("functions.jl")
 
 #### Assignment 1a
 # Initialize parameters
@@ -63,6 +64,10 @@ println("Stops visited: $stopsvisited")
 println("Lines taken: $linestaken", " → Total transfer penalty: $transfer_penalty_total")
 println("Ridetime per line: $ridetime", " → Total ridetime: $total_ridetime")
 println("Total shortest path time (ridetime + transfers): $total_shortest")
+
+# Assignment 1a
+# Section to add visualization of the line plan (Adrian)
+plot_lineplan(coords, lineplan)
 
 # Step 3: Define your KPI for direct travelers and evaluate
 
