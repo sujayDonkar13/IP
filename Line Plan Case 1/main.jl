@@ -1,9 +1,8 @@
 # IMPORTANT! Your names, surnames, student IDs
 # Include here packages
-# Added inclusion of Plots for plotting needs (Adrian)
-using DelimitedFiles, Printf, Plots, Statistics, Random
+using DelimitedFiles, Printf
 # Include here other scripts if needed, e.g., include("myfunctions.jl")
-include("functions.jl")
+include("evaluator.jl")
 
 #### Assignment 1a
 # Initialize parameters
@@ -65,30 +64,6 @@ println("Lines taken: $linestaken", " → Total transfer penalty: $transfer_pena
 println("Ridetime per line: $ridetime", " → Total ridetime: $total_ridetime")
 println("Total shortest path time (ridetime + transfers): $total_shortest")
 
-# Assignment 1a
-# Section to add visualization of the lineplan
-println("--------------------------------------")
-println("Visualization Functionality Check")
-
-plot_lineplan(coords, lineplan,5)
-
 # Step 3: Define your KPI for direct travelers and evaluate
-println("--------------------------------------")
-println("Direct Travelers Approach KPI")
-
-DTS = direct_travelers_share(OD, lineplan)
-println("Direct Travelers Share (DTS): ", @sprintf("%.2f%%", 100*DTS))
 
 # Step 4: Define your KPI for fairness and evaluate
-
-# Call fairness function
-println("--------------------------------------")
-println("Fairness KPIs")
-
-fairness_p90, fairness_mean, ratios = fairness_index(shortest, network, OD)
-println("90th percentile detour ratio (Fairness Index): ", @sprintf("%.2f", fairness_p90))
-println("Average detour ratio: ", @sprintf("%.2f", fairness_mean))
-
-
-G = gini_index(ratios)
-println("Gini Fairness Index: ", @sprintf("%.3f", G))
